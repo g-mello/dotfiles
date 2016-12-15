@@ -1,0 +1,4 @@
+download-path ~/music/podcast
+max-downloads 5
+
+browser "links %u"

@@ -1,0 +1,71 @@
+#Login Gmail
+source "gpg2 -dq $HOME/.muttpwd.gpg |"
+
+#source  $HOME/mutt-colors-solarized/mutt-colors-solarized-dark-16.muttrc 
+#source $MAILCONF/mutt-colors-solarized/mutt-colors-solarized-light-16.muttrc 
+source /home/gmello/mutt-colors-solorized/mutt-colors-solarized-dark-256.muttrc
+#source  /home/gmello/mutt-colors-solorized/mutt-colors-solarized-light-256.muttrc
+
+set folder      = imaps://imap.gmail.com/
+set imap_user   = esquilogp@gmail.com
+set imap_pass   = $my_pw_gmail 
+set spoolfile   = +INBOX
+mailboxes       = +INBOX
+set smtp_url    = smtps://$imap_user:$imap_pass@smtp.gmail.com:465
+set ssl_starttls = yes
+
+#https://gist.github.com/bnagy/8914f712f689cc01c267
+set ssl_force_tls = yes
+set ssl_verify_dates = yes
+set ssl_verify_host = yes
+unset ssl_usesystemcerts 
+set certificate_file = ~/.mutt/gmailcerts 
+
+set mailcap_path = ~/.mutt/mailcap
+
+# GPG2 encription settings to encript/decript emails
+source ~/.gpgmutt.rc
+set pgp_use_gpg_agent = yes
+
+set crypt_use_gpgme = yes 
+set crypt_replyencrypt = yes 
+set crypt_replysign = yes 
+set crypt_replysignencrypted = yes
+
+set pgp_sign_as = 0xF806A3C3
+set pgp_verify_sig = yes
+set pgp_show_unusable = no
+set pgp_timeout = 1800
+
+#set pgp_auto_decode = yes 
+
+
+#Automatically open html messanges in elinks
+auto_view text/html
+
+# Store message headers locally to speed things up.
+# If hcache is a folder, Mutt will create sub cache folders for each account which may speeds things even more up.
+set header_cache = ~/.cache/mutt
+
+# Store messages locally to speed things up, like searching message bodies.
+# Can be the same folder as header_cache.
+# This will cost important disk usage according to your e-mail amount.
+#set message_cachedir = "~/.cache/mutt"
+
+# Specify where to save and/or look for postponed messages.
+set postponed = +[Gmail]/Drafts
+
+# Allow Mutt to open new imap connection automatically.
+unset imap_passive
+
+# Keep IMAP connection alive by polling intermittently (time in seconds).
+set imap_keepalive = 300
+
+# How often to check for new mail (time in seconds).
+set mail_check = 300
+# -*-muttrc-*-
+
+# Set nano to use with mutt
+set editor=vim 
+
+alias netshoes Netshoes <netshoes@info.netshoes.com.br>
